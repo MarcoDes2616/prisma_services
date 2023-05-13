@@ -28,13 +28,26 @@ const Dashboard = () => {
         "observation": "Pago servicio de agua"
         }
     ]
+    const getBill = () => {
         
+    }
 
     return (
-        <div>
+        <div className='dashboard'>
             <h2>Movimientos</h2>
-            <div className='bills'>
-
+            <div className='separator'></div>
+            <div className='bills_container'>
+                {info.map((bill) => (
+                    <div onClick={() => getBill()} className='bill' key={bill.id}>
+                        <div className='info_bill'>
+                            <p>{bill.date_bill}</p>
+                            <p>{bill.observation}</p>
+                        </div>
+                        <div>
+                            <p><b>{bill.value}</b></p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
