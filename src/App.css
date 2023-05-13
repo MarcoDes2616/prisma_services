@@ -1,7 +1,208 @@
-#root {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+
+/*========== GLOBALES ==========*/
+:root {
   --primaryColor: #0075f2;
   --secondColor: #26ffe6;
-  --primaryText: #ffffff;
+  --primaryText: #212121;
   --background: #080b19;
 }
 
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a, button, .btn, li{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+body{
+  background-color: white;
+  width: 100%;
+  color: var(--primaryText);
+  padding: 5rem 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*========== NAVBAR ===========*/
+.nav{
+  width: 100%;
+  height: 3.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.nav a{
+  width: 35%;
+  max-width: 150px;
+}
+
+.logo{
+  width: 100%;
+  transition: all .3s;
+}
+.logo:hover{
+  scale: 1.1;
+}
+
+/*========== HOME =============*/
+
+.home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcome{
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.welcome p{
+  font-size: 1.5rem;
+}
+
+.title{
+  font-size: 3.5rem;
+}
+
+h1{
+  font-weight: 700;
+  background: linear-gradient(36deg, var(--secondColor) 0%, var(--primaryColor) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1px var(--background));
+  animation: titulo 4s ease infinite;
+}
+
+@keyframes titulo {
+  0%{
+    background-position:50% 0%
+  };
+  50%{
+    background-position:51% 100%
+  };
+  100%{
+    background-position:50% 0%
+  }
+}
+
+.home hr{
+  height: 5px;
+  background: linear-gradient(90deg, var(var(--background)), transparent);
+}
+
+.call_login{
+  width: 100%;
+  max-width: 600px;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.call_login .bx{
+  color: var(--background);
+}
+
+/*======== LOADER ==========*/
+.loader{
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+
+.error{
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.363);
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  font-size: .8rem;
+  margin: .5rem 0;
+}
+
+/*============ LOGIN =============*/
+.login{
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+form{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.login_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login_box input{
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  font-style: italic;
+  padding: 0 .5rem;
+  margin: .5rem 0;
+  background-color: rgb(201, 205, 207);
+}
+
+.btn_login{
+  width: 50%;
+  background: var(--primaryColor);
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  color: white;
+  font-weight: 700;
+}
+
+.btn_login:hover{
+  background: linear-gradient(45deg, var(--secondColor), var(--primaryColor));
+}
+
+
+
+@media screen and (min-width: 690px) {
+  .nav{
+    height: 4.5rem;
+  }
+}
