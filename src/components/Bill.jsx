@@ -19,7 +19,6 @@ const Bill = ({
   const [value, setValue] = useState()
   const [type, setType] = useState()
   const dispatch = useDispatch()
-  const isLoading = useSelector(state => state.isLoading)
   
 
   useEffect(() => {

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "../utils/axios";
 import Bill from "../components/Bill";
+import { setIsLoading } from "../store/slices/isLoading.slice";
+import Loader from "../components/Loader";
 
 const Dashboard = () => {
   const user = useSelector((state) => state.user);
@@ -10,6 +12,8 @@ const Dashboard = () => {
   const username = localStorage.getItem("userLocal");
   const [modal, setModal] = useState(false);
   const [billToShow, setBillToShow] = useState(4);
+  const dispatch = useDispatch()
+  const isLoading = useSelector(state => state.isLoading)
 
   useEffect(() => {
     getData();
@@ -50,13 +54,15 @@ const Dashboard = () => {
     setModal(true);
   };
 
-  const register = (type, observation, value) => {
-    const data = { type, observation, value };
+  const register = (value, observation, type) => {
+    dispatch(setIsLoading(true))
+    const data = { value, observation, type };
     axios
       .post(`/users/${username}/bills`, data)
       .then((res) => {
         getData();
         setModal(false);
+        dispatch(setIsLoading(false))
       })
       .catch((error) => alert(error));
   };
@@ -65,6 +71,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      {isLoading && <Loader />}
       <div className="add_bill_wrapper" onClick={() => setModal(true)}>
         <div className="add_bill">+</div>
       </div>
