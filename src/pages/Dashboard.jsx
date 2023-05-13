@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [billSelected, setBillSelected] = useState();
   const username = localStorage.getItem("userLocal");
   const [modal, setModal] = useState(false);
-  const [billToShow, setBillToShow] = useState(4)
+  const [billToShow, setBillToShow] = useState(4);
 
   useEffect(() => {
     getData();
@@ -27,7 +27,7 @@ const Dashboard = () => {
   const deleteBill = (id) => {
     axios.delete(`/users/${username}/bills/${id}`).then((res) => {
       setBillSelected();
-      setModal(false)
+      setModal(false);
       getData();
     });
   };
@@ -35,31 +35,34 @@ const Dashboard = () => {
   const formatData = (date) => {
     const fecha = new Date(date);
     const fechaFormateada = fecha.toLocaleDateString();
-    return fechaFormateada
+    return fechaFormateada;
   };
 
   const formatCurrency = (value) => {
-    const number = parseFloat(value)
-    return number?.toLocaleString('es-ES')
-}
-
-    const getModal = (id) => {
-        setBillSelected(id)
-        setModal(true)
+    if (value) {
+      const number = parseFloat(value);
+      return number?.toLocaleString("es-ES");
     }
+  };
 
-    const register = (type, observation, value) => {
-        const data = {type, observation, value}
-        axios.post(`/users/${username}/bills`, data)
-            .then(res => {
-                getData()
-                setModal(false)
-            })
-            .catch(error => alert(error))
-      };
+  const getModal = (id) => {
+    setBillSelected(id);
+    setModal(true);
+  };
 
-  let newData = bills?.slice(0, billToShow)
-console.log(billSelected)
+  const register = (type, observation, value) => {
+    const data = { type, observation, value };
+    axios
+      .post(`/users/${username}/bills`, data)
+      .then((res) => {
+        getData();
+        setModal(false);
+      })
+      .catch((error) => alert(error));
+  };
+
+  let newData = bills?.slice(0, billToShow);
+
   return (
     <div className="dashboard">
       <div className="add_bill_wrapper" onClick={() => setModal(true)}>
@@ -80,11 +83,7 @@ console.log(billSelected)
       <div className="separator"></div>
       <div className="bills_container">
         {newData?.sort().map((bill) => (
-          <div
-            onClick={() => getModal(bill.id)}
-            className="bill"
-            key={bill.id}
-          >
+          <div onClick={() => getModal(bill.id)} className="bill" key={bill.id}>
             <div className="info_bill">
               <p>{formatData(bill.date_bill)}</p>
               <p>{bill.observation}</p>
@@ -96,10 +95,13 @@ console.log(billSelected)
             </div>
           </div>
         ))}
-      <button disabled={billToShow >= bills?.length} 
-        className="show_more_btn"
-        onClick={() => setBillToShow(billToShow + 4)}
-        >Ver mas</button>
+        <button
+          disabled={billToShow >= bills?.length}
+          className="show_more_btn"
+          onClick={() => setBillToShow(billToShow + 4)}
+        >
+          Ver mas
+        </button>
       </div>
     </div>
   );

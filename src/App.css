@@ -22,7 +22,7 @@ a, button, .btn, li{
 }
 
 body{
-  background-color: white;
+  min-height: 100vh;
   width: 100%;
   color: var(--primaryText);
   padding: 5rem 1rem;
@@ -96,19 +96,6 @@ h1{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 1px var(--background));
-  animation: titulo 4s ease infinite;
-}
-
-@keyframes titulo {
-  0%{
-    background-position:50% 0%
-  };
-  50%{
-    background-position:51% 100%
-  };
-  100%{
-    background-position:50% 0%
-  }
 }
 
 .home hr{
@@ -129,19 +116,83 @@ h1{
 }
 
 .call_login .bx{
-  color: var(--background);
   cursor: pointer;
+  color: white;
+  filter: drop-shadow(0 0 2px var(--background));
+}
+
+.call_login .bx:hover{
+  color: var(--background);
 }
 
 /*======== LOADER ==========*/
-.loader{
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
+.loader_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: fixed;
+  z-index: 103;
   top: 0;
   left: 0;
-  z-index: 101;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a0f2596;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }
 
 .error{
@@ -160,7 +211,7 @@ h1{
 .login{
   width: 100%;
   max-width: 500px;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 10rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,9 +220,14 @@ h1{
 }
 
 .login .bx{
-  color: var(--background);
   margin-bottom: 7rem;
   cursor: pointer;
+  color: white;
+  filter: drop-shadow(0 0 2px var(--background));
+}
+
+.login .bx:hover{
+  color: var(--background);
 }
 
 form{
@@ -343,7 +399,6 @@ form{
   top: 0;
   left: 0;
   z-index: 101;
-
 }
 
 .showbill{

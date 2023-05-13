@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import axios from '../utils/axios';
 import { setIsLoading } from '../store/slices/isLoading.slice';
 import { setUser } from '../store/slices/user.slice';
+import Loader from '../components/Loader';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -25,9 +26,9 @@ const Login = () => {
                 localStorage.setItem("userLocal", res.data.username)
                 dispatch(setUser(res.data))
                 navigate("/services/dashboard")
+                dispatch(setIsLoading(false))
             })
             .catch(error => showError(error.message))
-            .finally(dispatch(setIsLoading(false)))
     }
 
     const showError = (error) => {
@@ -41,7 +42,8 @@ const Login = () => {
     return (
         <div className='login'>
             {isLoading && <Loader/>}
-            <i className='bx bxs-home bx-lg'></i>
+            <p>Inicio</p>
+            <i onClick={() => navigate("/")} className='bx bxs-home bx-lg'></i>
             <form onSubmit={handleSubmit(submitForm)}>
                     <div className="login_box">
                         <label>Username</label>

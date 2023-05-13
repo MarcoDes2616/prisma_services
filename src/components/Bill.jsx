@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../utils/axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsLoading } from "../store/slices/isLoading.slice";
 
 const Bill = ({
   billSelected,
@@ -17,13 +18,19 @@ const Bill = ({
   const [observation, setObservation] = useState()
   const [value, setValue] = useState()
   const [type, setType] = useState()
+  const dispatch = useDispatch()
+  const isLoading = useSelector(state => state.isLoading)
   
 
   useEffect(() => {
     if (billSelected) {
+      dispatch(setIsLoading(true))
       axios
         .get(`/users/${user.username || username}/bills/${billSelected}`)
-        .then((res) => setInfo(res.data))
+        .then((res) => {
+          setInfo(res.data)
+          dispatch(setIsLoading(false))
+        })
         .catch((error) => alert(error));
     }
   }, []);
@@ -37,8 +44,6 @@ const Bill = ({
     setModal(false);
     setBillSelected();
   };
-
-  console.log(info);
 
   return (
     <div className="showbill__container">

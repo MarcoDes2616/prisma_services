@@ -6,10 +6,22 @@ import Home from './pages/Home'
 import Dashboard from './pages/Dashboard'
 import Navbar from './components/Navbar'
 import Loader from './components/Loader'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { setIsLoading } from './store/slices/isLoading.slice'
 
 function App() {
   const isLoading = useSelector(state => state.isLoading);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setIsLoading(true))
+    const interval = setTimeout(() => {
+      dispatch(setIsLoading(false))
+  }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
 
   return (
     <HashRouter>
