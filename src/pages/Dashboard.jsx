@@ -5,7 +5,7 @@ import Bill from '../components/Bill';
 
 const Dashboard = () => {
     const user = useSelector(state => state.user)
-    const [bills, setBills] = useState(true)
+    const [bills, setBills] = useState(false)
     const [billSelected, setBillSelected] = useState()
 
     useEffect(() => {
