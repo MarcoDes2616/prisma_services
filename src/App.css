@@ -125,6 +125,7 @@ h1{
 
 .call_login .bx{
   color: var(--background);
+  cursor: pointer;
 }
 
 /*======== LOADER ==========*/
