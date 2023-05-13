@@ -2,51 +2,40 @@
   <a href="https://es.react.dev/" target="blank"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*y6C4nSvy2Woe0m7bWEn4BA.png" width="200" alt="Logo react" /></a>
 </p>
 
-# Book Api
+# Prisma Services
 
 ## Descripción del proyecto
 
-Este proyecto es una aplicación web que te permite crear autores, libros y subir imágenes de los libros. La aplicación está construida usando Node.js y Express, y utiliza una base de datos PostgreSQL para almacenar la información de los autores y los libros.
+Este proyecto es una aplicación web que te permite consumir una API de servicios correspondiente a registros de actividades cotidianas de las cuales se refleja el flujo fidusiario (ingreso o salida), los montos, asi como las observaciones correspondiente.
 
 ## Características principales
 
-1. Crear autores: Puedes crear autores con información como nombre, apellido, fecha de nacimiento, foto y biografía.
-2. Crear libros: Puedes crear libros y vincularlos a un autor específico. La información del libro incluye título, fecha de publicación, descripción
-3. Subir imágenes: La aplicación te permite subir imágenes de portada de libros y almacenarlas en la base de datos.
+1. Crear registros de actividades: Puedes crear actividades con la informacion relacionada para su asentamiento en base de dato.
+2. Obtener registros de actividades de un usuario: los usuarios podrán mantener un registro  de sus actividades mapeado en la ruta Dashboard.
+3. Obtener detallado de actividad especifica: La aplicación te permite obtener el detallado de una actividad en especifico a elección de las registradas.
+4. Eliminar actividades: el usuario podrá eliminar actividades de su elección.
 
 ## Tecnologías utilizadas
 
-1. Express: Un framework minimalista de Node.js que facilita la creación de aplicaciones web y APIs.
+1. React.js: Un framework minimalista para la creacion de aplicaciones web.
 
-2. Express-rate-limit: Middleware de Express que limita la cantidad de solicitudes que un cliente puede hacer en un período de tiempo especificado.
+2. Axios: Axios es un cliente HTTP simple basado en promesas para el navegador y node.js.
 
-3. Express-validator: Middleware de Express que valida los datos de entrada antes de que se procesen.
+3. React-hook-form: librería para creación de formularios eficaces, flexibles y extensibles con validación fácil de usar.
 
-4. Firebase: Una plataforma de desarrollo de aplicaciones móviles y web que proporciona herramientas para crear, mejorar y hacer crecer aplicaciones.
+4. React-redux: Libreria diseñada para trabajar con el modelo de componentes de React, con la funcion sublime de extraer los valores que se requiere en los componentes de Redux y actualización automática según sea necesario.
 
-5. Helmet: Middleware de Express que ayuda a proteger la aplicación de varias vulnerabilidades web mediante la configuración adecuada de las cabeceras HTTP.
+5. React-router-dom: El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. Consulte la guía de inicio para obtener más información sobre cómo comenzar con React Router.
 
-6. HPP: Middleware de Express que previene los ataques de envenenamiento de parámetros HTTP.
-
-7. Morgan: Middleware de Express que registra solicitudes HTTP para el registro y análisis.
-
-8. Multer: Middleware de Express que maneja la carga de archivos multipart/form-data.
-
-9. PostgreSQL: Un sistema de gestión de bases de datos relacionales de código abierto.
-
-10. Sequelize: Un ORM (Object-Relational Mapping) para bases de datos SQL que simplifica la interacción con la base de datos y proporciona una capa de abstracción sobre SQL.
-
-11. XSS-clean: Middleware de Express que limpia las entradas de usuario para evitar ataques de XSS (cross-site scripting).
 
 ## Requeisitos previos
 
-Antes de ejecutar el proyecto, asegúrate de tener instalado Node.js, PostgreSQL, nodemon en tu máquina.
+Antes de ejecutar el proyecto, asegurate de poseer una conección de datos estable ya que la función principal será la comunicación con la API de servicios de Prisma Digital. Deberás tener instalado Node.js a fin de ejecutar comandos NPM para los servicios locales.
+
 
 ## Cómo ejecutar el proyecto
 
 1. Clonar el proyecto
 2. Ejecutar `npm install`
-3. Clonar el archivo `.env.template` y renombrarlo a `.env`
-4. Cambiar las variables de entorno
-5. Levantar la base datos
-6. Levantar el modo de desarrollo: `npm run start:dev`
+3. Ubicar el archivo `.env.example` y renombrarlo a `.env`. Escribir la `URL BASE` la cual finaliza con la extención `.co`
+6. Levantar el modo de desarrollo: `npm run dev`
