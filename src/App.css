@@ -6,7 +6,7 @@
   --primaryColor: #0075f2;
   --secondColor: #26ffe6;
   --primaryText: #212121;
-  --background: #080b19;
+  --background: #0a0f25;
 }
 
 *{
@@ -234,6 +234,7 @@ form{
   width: 90%;
   height: 60px;
   background-color: #080b19;
+  border: 2px solid var(--background);
   border-radius: 5px;
   color: white;
   margin: auto;
@@ -241,7 +242,15 @@ form{
   justify-content: space-between;
   padding: .5rem 1rem;
   cursor: pointer;
+  transition: all .7s;
 }
+
+.bill:hover{
+  border: 2px solid var(--background);
+  background-color: rgb(233, 232, 232);
+  color: var(--primaryText);
+}
+
 .bill div{
   height: 100%;
   display: flex;
@@ -249,6 +258,35 @@ form{
   flex-direction: column;
   justify-content: center;
 }
+
+.showbill__container{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.445);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+
+}
+
+.showbill{
+  width: 90%;
+  max-width: 500px;
+  height: calc(100vh - 8rem);
+  /* background: rgb(255, 255, 255); */
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--background);
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+
 
 
 @media screen and (min-width: 690px) {

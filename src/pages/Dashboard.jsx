@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from '../utils/axios';
+import Bill from '../components/Bill';
 
 const Dashboard = () => {
     const user = useSelector(state => state.user)
-    const [bills, setBills] = useState()
+    const [bills, setBills] = useState(true)
+    const [billSelected, setBillSelected] = useState()
 
     useEffect(() => {
         axios.get(`/users/${user.username}/bills`)
@@ -28,17 +30,19 @@ const Dashboard = () => {
         "observation": "Pago servicio de agua"
         }
     ]
-    const getBill = () => {
-        
+    const getBill = (id) => {
+        setBillSelected(id)
+        setBills(true)
     }
 
     return (
         <div className='dashboard'>
+            {bills && <Bill billSelected={billSelected} setBillSelected={setBillSelected} setBills={setBills}/>}
             <h2>Movimientos</h2>
             <div className='separator'></div>
             <div className='bills_container'>
                 {info.map((bill) => (
-                    <div onClick={() => getBill()} className='bill' key={bill.id}>
+                    <div onClick={() => getBill(bill.id)} className='bill' key={bill.id}>
                         <div className='info_bill'>
                             <p>{bill.date_bill}</p>
                             <p>{bill.observation}</p>
