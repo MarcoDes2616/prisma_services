@@ -219,7 +219,7 @@ h1{
   flex-direction: column;
 }
 
-.login .bx{
+.login .bxs-home{
   margin-bottom: 7rem;
   cursor: pointer;
   color: white;
@@ -298,6 +298,7 @@ form{
   border-radius: 2px;
   position: sticky;
   top: 7.4rem;
+  margin-bottom: 2rem;
 }
 
 .bills_container{
@@ -484,11 +485,66 @@ textarea{
 
 /*============ MODAL CLIPBOARD==========*/
 .credentials{
-  width: 300px;
-  height: 200px;
-  border-radius: 15px 0 15px 15px 15px;
-  background: rgba(255, 255, 255, 0.473);
+  width: 180px;
+  height: 100px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .5rem;
+  align-items: center;
+  border-radius: 15px 15px 15px 0;
+  background: rgba(255, 255, 255, 0.173);
   backdrop-filter: blur(5px);
+  position: fixed;
+  top: 11rem;
+  left: calc(50% - 90px);
+  z-index: 3;
+  font-weight: 200;
+  font-size: .9rem;
+}
+
+.credentials div{
+  width: 100%;
+  height: 2rem;
+  background: linear-gradient(45deg, var(--primaryColor), var(--secondColor));
+  border-radius: 8px;
+  color: white;
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.credentials div .bx{
+  border-left: 1px solid gray;
+  font-size: 1rem;
+  padding-left: .3rem;
+}
+
+.credentials.hide{
+  transform: rotateY(90deg);
+}
+
+.get_credentials{
+  text-align: left;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.get_credentials .bx{
+  color: #0075f2;
+
+}
+
+.copied{
+  position: absolute;
+  top: -.7rem;
+  color: #0075f2;
+  background: white;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid var(--primaryColor);
+  border-bottom: none;
+  padding: .2rem;
 }
 
 @media screen and (min-width: 690px) {

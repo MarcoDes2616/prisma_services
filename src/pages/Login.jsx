@@ -6,6 +6,7 @@ import axios from '../utils/axios';
 import { setIsLoading } from '../store/slices/isLoading.slice';
 import { setUser } from '../store/slices/user.slice';
 import Loader from '../components/Loader';
+import Clipboard from '../components/Clipboard';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -13,6 +14,7 @@ const Login = () => {
     const { register, handleSubmit, reset} = useForm();
     const [error, setError] = useState()
     const isLoading = useSelector(state => state.isLoading);
+    const [clipboard, setClipboard] = useState(false)
 
 
     const submitForm = async data => {
@@ -42,8 +44,13 @@ const Login = () => {
     return (
         <div className='login'>
             {isLoading && <Loader/>}
+            {<Clipboard clipboard={clipboard} setClipboard={setClipboard}/>}
             <p>Inicio</p>
             <i onClick={() => navigate("/")} className='bx bxs-home bx-lg'></i>
+            <p onClick={()=> setClipboard(!clipboard)} 
+                className='get_credentials'>Obtener credenciales
+                <i className={ clipboard ? 'bx bxs-down-arrow' : 'bx bxs-up-arrow'} ></i></p>
+            <div className="separator"></div>
             <form onSubmit={handleSubmit(submitForm)}>
                     <div className="login_box">
                         <label>Username</label>
